@@ -8,6 +8,7 @@ COMMIT="a42e166e94753ca0a8e290225ec7127a623374dd"
 SRC_URI="https://github.com/visualboyadvance-m/visualboyadvance-m/archive/${COMMIT}.tar.gz -> ${PN}-${COMMIT}.tar.gz"
 LICENSE="CC-BY-SA-3.0 GPL-2.0"
 SLOT="0"
+S="${WORKDIR}/"
 KEYWORDS="~amd64"
 IUSE="+openal +ffmpeg"
 RDEPEND=">=media-libs/openal-1.22.2-r1
@@ -27,6 +28,12 @@ DEPEND="${RDEPEND}
 		>=dev-util/ninja-1.11.1-r2"
 
 src_compile() {
-	cmake .. -G Ninja
-	ninja
+	BUILDDIR="/var/tmp/portage/games-emulation/visualboyadvance-m-9999/work/visualboyadvance-m-a42e166e94753ca0a8e290225ec7127a623374dd"
+	cmake $BUILDDIR -G Ninja || die
+	ninja || die
+}
+
+src_install() {
+	PKGNAME="visualboyadvance-m"
+	dobin ${WORKDIR}/$PKGNAME
 }

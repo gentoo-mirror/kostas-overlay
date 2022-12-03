@@ -9,9 +9,9 @@ SRC_URI="https://github.com/visualboyadvance-m/visualboyadvance-m/archive/${COMM
 LICENSE="CC-BY-SA-3.0 GPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="openal ffmpeg"
-RDEPEND="openal? ( >=media-libs/openal-1.22.2-r1 )
-		ffmpeg? ( >=media-video/ffmpeg-4.4.3 )"
+IUSE="+openal +ffmpeg"
+RDEPEND=">=media-libs/openal-1.22.2-r1
+		>=media-video/ffmpeg-4.4.3"
 DEPEND="${RDEPEND}
 		>=sys-devel/gcc-12.2.1_p20221008
 		>=sys-devel/make-4.3
